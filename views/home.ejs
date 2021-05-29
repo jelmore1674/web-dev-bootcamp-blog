@@ -1,0 +1,22 @@
+<!-- @format -->
+<%- include( './partials/header') %>
+
+    <h1>Home</h1>
+    <p>
+        <%= homeContent %>
+    </p>
+
+    <% blogPosts.forEach((post)=>{ %>
+        <% let title = post.title; %>
+            <% let content = post.body %>
+                <div>
+                    <h2>
+                        <%= title %>
+                    </h2>
+                    <p>
+                        <%= content %>
+                    </p>
+                </div>
+                <%  }) %>
+
+                    <%- include('./partials/footer') %>
