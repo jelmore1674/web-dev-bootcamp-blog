@@ -8,15 +8,28 @@
 
     <% blogPosts.forEach((post)=>{ %>
         <% let title = post.title; %>
-            <% let content = post.body %>
-                <div>
-                    <h2>
-                        <%= title %>
-                    </h2>
-                    <p>
-                        <%= content %>
-                    </p>
-                </div>
-                <%  }) %>
+            <div>
+                <h2>
+                    <%= title %>
+                </h2>
+                <p>
 
-                    <%- include('./partials/footer') %>
+                    <% let content = post.body %>
+                        <% if ( content.length > 100){ %>
+                            <% let length = 100 %>
+                                <% let ending = "..." %>
+                                    <% let contentShort = content.substring(0,length) + ending %>
+                                        <% let postLink = "/posts/" + title %>
+                                            <% console.log(postLink) %>
+                                                <%= contentShort  %>
+                                                    <a href="<%= postLink %>">Read More</a>
+                </p>
+
+            </div>
+            <%  } else if ( content.length < 100) { %>
+                <%= content  %>
+                    </p>
+                    </div>
+                    <%  }}) %>
+
+                        <%- include('./partials/footer') %>
